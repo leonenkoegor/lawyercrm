@@ -1,0 +1,15 @@
+/home/leon/Stuff/Projects/lawyercrm/src/main/java/webfusion/lawyercrm/views/services/ServicesView.java
+/home/leon/Stuff/Projects/lawyercrm/src/main/java/webfusion/lawyercrm/views/main/MainView.java
+/home/leon/Stuff/Projects/lawyercrm/src/main/java/webfusion/lawyercrm/views/login/LoginView.java
+/home/leon/Stuff/Projects/lawyercrm/src/main/java/webfusion/lawyercrm/services/ServicesService.java
+/home/leon/Stuff/Projects/lawyercrm/src/main/java/webfusion/lawyercrm/configs/SecurityUtils.java
+/home/leon/Stuff/Projects/lawyercrm/src/main/java/webfusion/lawyercrm/services/NewsService.java
+/home/leon/Stuff/Projects/lawyercrm/src/main/java/webfusion/lawyercrm/repositories/ServicesRepository.java
+/home/leon/Stuff/Projects/lawyercrm/src/main/java/webfusion/lawyercrm/models/News.java
+/home/leon/Stuff/Projects/lawyercrm/src/main/java/webfusion/lawyercrm/repositories/NewsRepository.java
+/home/leon/Stuff/Projects/lawyercrm/src/main/java/webfusion/lawyercrm/configs/SecurityConfiguration.java
+/home/leon/Stuff/Projects/lawyercrm/src/main/java/webfusion/lawyercrm/views/administration/AdministrationView.java
+/home/leon/Stuff/Projects/lawyercrm/src/main/java/webfusion/lawyercrm/models/Services.java
+/home/leon/Stuff/Projects/lawyercrm/src/main/java/webfusion/lawyercrm/configs/CustomRequestCache.java
+/home/leon/Stuff/Projects/lawyercrm/src/main/java/webfusion/lawyercrm/Application.java
+/home/leon/Stuff/Projects/lawyercrm/src/main/java/webfusion/lawyercrm/views/news/NewsView.java
