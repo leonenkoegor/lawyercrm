@@ -2,11 +2,8 @@ package webfusion.lawyercrm.models;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.util.Date;
+import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity(name = "news")
 @Data
@@ -15,6 +12,7 @@ public class News {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String title;
+    @Column(length = 99999)
     private String text;
-    private Date date;
+    private LocalDate date;
 }

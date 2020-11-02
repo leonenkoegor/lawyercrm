@@ -9,8 +9,6 @@ document.documentElement.setAttribute('theme', 'dark');
 
 import $css_0 from 'Frontend/styles/views/main/main-view.css';
 addCssBlock(`<custom-style><style>${$css_0}</style></custom-style>`);
-import $css_1 from 'Frontend/styles/views/administration/administration-view.css';
-addCssBlock(`<custom-style><style>${$css_1}</style></custom-style>`);
 
 import '@polymer/iron-icon/iron-icon.js';
 import '@polymer/iron-list/iron-list.js';
