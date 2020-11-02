@@ -5,14 +5,14 @@ import org.springframework.stereotype.Service;
 import webfusion.lawyercrm.models.News;
 import webfusion.lawyercrm.repositories.NewsRepository;
 
-import java.util.Collection;
+import java.util.List;
 
 @Service
 public class NewsService {
     @Autowired
     private NewsRepository newsRepository;
 
-    public Collection<News> findAll() {
+    public List<News> findAll() {
         return newsRepository.findAll();
     }
 
