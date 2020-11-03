@@ -12,6 +12,7 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import webfusion.lawyercrm.models.News;
 import webfusion.lawyercrm.services.NewsService;
@@ -21,12 +22,10 @@ import javax.annotation.PostConstruct;
 
 @Route(value = "admin/news", layout = MainView.class)
 @PageTitle("News | CRM")
+@NoArgsConstructor
 public class NewsView extends HorizontalLayout {
     @Autowired
     private NewsService newsService;
-
-    public NewsView() {
-    }
 
     @PostConstruct
     public void init() {

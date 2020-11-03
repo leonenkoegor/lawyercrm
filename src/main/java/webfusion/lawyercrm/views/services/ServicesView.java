@@ -10,6 +10,7 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import webfusion.lawyercrm.models.Services;
 import webfusion.lawyercrm.services.ServicesService;
@@ -19,12 +20,10 @@ import javax.annotation.PostConstruct;
 
 @Route(value = "admin/services", layout = MainView.class)
 @PageTitle("Services | CRM")
+@NoArgsConstructor
 public class ServicesView extends VerticalLayout {
     @Autowired
     ServicesService servicesService;
-
-    public ServicesView() {
-    }
 
     @PostConstruct
     public void init() {
