@@ -15,6 +15,7 @@ import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.component.tabs.TabsVariant;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.RouterLink;
+import webfusion.lawyercrm.views.advices.AdvicesView;
 import webfusion.lawyercrm.views.feedback.FeedbackView;
 import webfusion.lawyercrm.views.news.NewsView;
 import webfusion.lawyercrm.views.pages.PagesView;
@@ -81,6 +82,7 @@ public class MainView extends AppLayout {
         return new Tab[] {
                 createTab("Feedback", FeedbackView.class),
                 createTab("News", NewsView.class),
+                createTab("Advices", AdvicesView.class),
                 createTab("Services", ServicesView.class),
                 createTab("Pages", PagesView.class),
         };
