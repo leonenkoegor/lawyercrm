@@ -10,8 +10,12 @@ import webfusion.lawyercrm.services.ServicesService;
 @RestController
 @RequestMapping("api/services")
 public class ServicesController {
+    private final ServicesService servicesService;
+
     @Autowired
-    private ServicesService servicesService;
+    public ServicesController(ServicesService servicesService) {
+        this.servicesService = servicesService;
+    }
 
     @GetMapping
     public Object getAll() {

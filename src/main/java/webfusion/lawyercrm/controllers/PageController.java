@@ -12,8 +12,12 @@ import webfusion.lawyercrm.services.exceptions.PageNotFoundException;
 @RestController
 @RequestMapping("api/pages")
 public class PageController {
+    private final PageService pageService;
+
     @Autowired
-    private PageService pageService;
+    public PageController(PageService pageService) {
+        this.pageService = pageService;
+    }
 
     @GetMapping("/{page}")
     public Object get(@PathVariable String page) {

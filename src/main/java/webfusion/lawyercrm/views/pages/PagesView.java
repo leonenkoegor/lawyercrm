@@ -35,8 +35,20 @@ public class PagesView extends VerticalLayout {
     @PostConstruct
     public void init() {
         createTabAndContent("Liquidation");
-        createTabAndContent("ASD");
+        createTabAndContent("Bankruptcy");
+        createTabAndContent("LegalServices");
+        createTabAndContent("Specialists");
+        createTabAndContent("PriceInformation");
+        createTabAndContent("AboutMe");
         configureTabsAndContent();
+        setAlignItems(Alignment.CENTER);
+
+        setHeight("100%");
+        divs.setWidthFull();
+        divs.setHeight("100%");
+        divs.setClassName("v-scrollable");
+        divs.getStyle().set("overflow-y", "auto");
+
         add(tabs, divs);
     }
 
