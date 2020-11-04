@@ -6,10 +6,9 @@ import javax.persistence.*;
 
 @Entity()
 @Data
-public class Liquidation {
+public class Page {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String pageName;
     @Column(length = 99999)
     private String text;
 }
