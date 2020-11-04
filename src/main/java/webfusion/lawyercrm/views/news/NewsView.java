@@ -3,10 +3,10 @@ package webfusion.lawyercrm.views.news;
 import com.vaadin.flow.component.crud.BinderCrudEditor;
 import com.vaadin.flow.component.crud.Crud;
 import com.vaadin.flow.component.crud.CrudEditor;
+import com.vaadin.flow.component.crud.CrudGrid;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
-import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.richtexteditor.RichTextEditor;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
@@ -23,24 +23,22 @@ import javax.annotation.PostConstruct;
 @Route(value = "admin/news", layout = MainView.class)
 @PageTitle("News | CRM")
 @NoArgsConstructor
-public class NewsView extends HorizontalLayout {
+public class NewsView extends VerticalLayout {
     @Autowired
     private NewsService newsService;
 
     @PostConstruct
     public void init() {
-        Crud<News> crud = new Crud<>(News.class, createCrudEditor());
+        CrudGrid<News> crudGrid = new CrudGrid<>(News.class, false);
+        Crud<News> crud = new Crud<>(News.class, crudGrid, createCrudEditor());
         crud.setDataProvider(new NewsDataProvider(newsService));
 
         crud.addSaveListener((event) -> newsService.update(event.getItem()));
         crud.addDeleteListener((event) -> newsService.delete(event.getItem()));
 
-        Grid.Column<News> editColumn = crud.getGrid().getColumnByKey("vaadin-crud-edit-column");
-        Grid.Column<News> idColumn = crud.getGrid().getColumnByKey("id");
-        Grid.Column<News> titleColumn = crud.getGrid().getColumnByKey("title");
-        Grid.Column<News> textColumn = crud.getGrid().getColumnByKey("text");
-        Grid.Column<News> dateColumn = crud.getGrid().getColumnByKey("date");
-        crud.getGrid().setColumnOrder(editColumn, idColumn, dateColumn, titleColumn, textColumn);
+        crud.getGrid().setColumnReorderingAllowed(true);
+        crud.getGrid().setSortableColumns();
+        crud.getGrid().removeColumnByKey("id");
 
         add(crud);
     }

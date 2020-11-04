@@ -2,7 +2,7 @@ package webfusion.lawyercrm.views.liquidation;
 
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.formlayout.FormLayout;
-import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.richtexteditor.RichTextEditor;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
@@ -18,14 +18,13 @@ import javax.annotation.PostConstruct;
 @Route(value = "admin/liquidation", layout = MainView.class)
 @PageTitle("Liquidation | CRM")
 @NoArgsConstructor
-public class LiquidationView extends Div {
+public class LiquidationView extends VerticalLayout {
     @Autowired
     private LiquidationService liquidationService;
 
     @PostConstruct
     public void init() {
         FormLayout form = new FormLayout();
-
         RichTextEditor text = new RichTextEditor();
 
         try {
@@ -42,8 +41,13 @@ public class LiquidationView extends Div {
             liquidationService.update(liquidation);
         });
 
-        form.add(text);
-        form.add(save);
+        form.setResponsiveSteps(
+                new FormLayout.ResponsiveStep("10em", 1),
+                new FormLayout.ResponsiveStep("20em", 4)
+        );
+
+        form.add(text, 4);
+        form.add(save, 1);
 
         add(form);
     }

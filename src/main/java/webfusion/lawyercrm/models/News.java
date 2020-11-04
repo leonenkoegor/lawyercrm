@@ -11,8 +11,8 @@ public class News {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private LocalDate date;
     private String title;
     @Column(length = 99999)
     private String text;
-    private LocalDate date;
 }

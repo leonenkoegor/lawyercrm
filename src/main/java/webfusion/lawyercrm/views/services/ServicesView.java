@@ -3,6 +3,7 @@ package webfusion.lawyercrm.views.services;
 import com.vaadin.flow.component.crud.BinderCrudEditor;
 import com.vaadin.flow.component.crud.Crud;
 import com.vaadin.flow.component.crud.CrudEditor;
+import com.vaadin.flow.component.crud.CrudGrid;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.NumberField;
@@ -27,17 +28,22 @@ public class ServicesView extends VerticalLayout {
 
     @PostConstruct
     public void init() {
-        Crud<Services> crud = new Crud<>(Services.class, createCrudEditor());
+        CrudGrid<Services> crudGrid = new CrudGrid<>(Services.class, false);
+        Crud<Services> crud = new Crud<>(Services.class, crudGrid, createCrudEditor());
         crud.setDataProvider(new ServicesDataProvider(servicesService));
 
         crud.addSaveListener((event) -> servicesService.update(event.getItem()));
         crud.addDeleteListener((event) -> servicesService.delete(event.getItem()));
 
+        crud.getGrid().setColumnReorderingAllowed(true);
+        crud.getGrid().setSortableColumns();
+        crud.getGrid().removeColumnByKey("id");
+
         add(crud);
     }
 
     public CrudEditor<Services> createCrudEditor() {
-        TextField serviceName = new TextField("Services Name");
+        TextField serviceName = new TextField("Service Name");
         NumberField costs = new NumberField("Costs");
         FormLayout form = new FormLayout(serviceName, costs);
 
