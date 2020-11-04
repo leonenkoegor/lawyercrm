@@ -9,8 +9,12 @@ import java.util.LinkedList;
 
 @Service
 public class ServicesService {
+    private final ServicesRepository servicesRepository;
+
     @Autowired
-    private ServicesRepository servicesRepository;
+    public ServicesService(ServicesRepository servicesRepository) {
+        this.servicesRepository = servicesRepository;
+    }
 
     public LinkedList<Services> findAll() {
         return servicesRepository.findAll();

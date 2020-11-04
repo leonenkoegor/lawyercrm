@@ -10,8 +10,12 @@ import java.util.Optional;
 
 @Service
 public class PageService {
+    private final PageRepository pageRepository;
+
     @Autowired
-    private PageRepository pageRepository;
+    public PageService(PageRepository pageRepository) {
+        this.pageRepository = pageRepository;
+    }
 
     public Page findById(String name) throws PageNotFoundException {
         Optional<Page> liquidation = pageRepository.findById(name);

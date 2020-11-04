@@ -9,8 +9,12 @@ import java.util.List;
 
 @Service
 public class NewsService {
+    private final NewsRepository newsRepository;
+
     @Autowired
-    private NewsRepository newsRepository;
+    public NewsService(NewsRepository newsRepository) {
+        this.newsRepository = newsRepository;
+    }
 
     public List<News> findAll() {
         return newsRepository.findAll();
