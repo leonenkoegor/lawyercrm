@@ -9,7 +9,7 @@ import webfusion.lawyercrm.services.NewsService;
 import java.util.stream.Stream;
 
 public class NewsDataProvider extends AbstractBackEndDataProvider<News, CrudFilter> {
-    private NewsService newsService;
+    private final NewsService newsService;
 
     public NewsDataProvider(NewsService newsService) {
         this.newsService = newsService;

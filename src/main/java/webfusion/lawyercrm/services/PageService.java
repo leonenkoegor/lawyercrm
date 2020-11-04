@@ -21,11 +21,7 @@ public class PageService {
         return liquidation.get();
     }
 
-    public Page update(Page page) {
-        return pageRepository.save(page);
-    }
-
-    public void delete(Page page) {
-        pageRepository.delete(page);
+    public void update(Page page) {
+        pageRepository.save(page);
     }
 }

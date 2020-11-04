@@ -16,8 +16,8 @@ public class ServicesService {
         return servicesRepository.findAll();
     }
 
-    public Services update(Services service) {
-        return servicesRepository.save(service);
+    public void update(Services service) {
+        servicesRepository.save(service);
     }
 
     public void delete(Services service) {

@@ -1,4 +1,4 @@
-package webfusion.lawyercrm.views.liquidation;
+package webfusion.lawyercrm.views.pages;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;

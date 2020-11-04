@@ -15,7 +15,7 @@ import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.component.tabs.TabsVariant;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.RouterLink;
-import webfusion.lawyercrm.views.liquidation.PagesView;
+import webfusion.lawyercrm.views.pages.PagesView;
 import webfusion.lawyercrm.views.news.NewsView;
 import webfusion.lawyercrm.views.services.ServicesView;
 
@@ -61,6 +61,7 @@ public class MainView extends AppLayout {
         HorizontalLayout logoLayout = new HorizontalLayout();
         logoLayout.setId("logo");
         logoLayout.setAlignItems(FlexComponent.Alignment.CENTER);
+        logoLayout.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
         logoLayout.add(new H1("LawyerCRM"));
         layout.add(logoLayout, menu);
         return layout;

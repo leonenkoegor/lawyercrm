@@ -16,8 +16,8 @@ public class NewsService {
         return newsRepository.findAll();
     }
 
-    public News update(News news) {
-        return newsRepository.save(news);
+    public void update(News news) {
+        newsRepository.save(news);
     }
 
     public void delete(News news) {

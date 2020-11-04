@@ -9,7 +9,7 @@ import webfusion.lawyercrm.services.ServicesService;
 import java.util.stream.Stream;
 
 public class ServicesDataProvider extends AbstractBackEndDataProvider<Services, CrudFilter> {
-    private ServicesService servicesService;
+    private final ServicesService servicesService;
 
     public ServicesDataProvider(ServicesService servicesService) {
         this.servicesService = servicesService;
