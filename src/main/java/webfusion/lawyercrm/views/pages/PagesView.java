@@ -34,6 +34,7 @@ public class PagesView extends VerticalLayout {
 
     @PostConstruct
     public void init() {
+        getThemeList().set("dark", true);
         createTabAndContent("Liquidation");
         createTabAndContent("Bankruptcy");
         createTabAndContent("LegalServices");
@@ -55,6 +56,7 @@ public class PagesView extends VerticalLayout {
     private void createTabAndContent(String name) {
         Tab tab = new Tab(name);
         Div div = new Div();
+        div.setHeightFull();
         if(tabToDiv.size() != 0) {
             div.setVisible(false);
         }
@@ -67,6 +69,7 @@ public class PagesView extends VerticalLayout {
         tabToDiv.forEach((tab, div) -> {
             FormLayout form = new FormLayout();
             RichTextEditor text = new RichTextEditor();
+            text.setMinHeight("70vh");
 
             try {
                 text.setValue(pageService.findById(tab.getLabel()).getText());

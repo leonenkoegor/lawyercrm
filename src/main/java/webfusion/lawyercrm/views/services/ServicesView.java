@@ -28,6 +28,8 @@ public class ServicesView extends VerticalLayout {
 
     @PostConstruct
     public void init() {
+        getThemeList().set("dark", true);
+        setSizeFull();
         CrudGrid<Services> crudGrid = new CrudGrid<>(Services.class, false);
         Crud<Services> crud = new Crud<>(Services.class, crudGrid, createCrudEditor());
         crud.setDataProvider(new ServicesDataProvider(servicesService));

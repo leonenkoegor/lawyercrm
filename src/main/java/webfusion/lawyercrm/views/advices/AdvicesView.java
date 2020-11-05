@@ -29,6 +29,8 @@ public class AdvicesView extends VerticalLayout {
 
     @PostConstruct
     public void init() {
+        getThemeList().set("dark", true);
+        setSizeFull();
         CrudGrid<Advices> crudGrid = new CrudGrid<>(Advices.class, false);
         Crud<Advices> crud = new Crud<>(Advices.class, crudGrid, createCrudEditor());
         crud.setDataProvider(new AdvicesDataProvider(advicesService));

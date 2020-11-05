@@ -15,12 +15,18 @@ import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.component.tabs.TabsVariant;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.RouterLink;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
+import webfusion.lawyercrm.services.UsersService;
 import webfusion.lawyercrm.views.advices.AdvicesView;
 import webfusion.lawyercrm.views.feedback.FeedbackView;
 import webfusion.lawyercrm.views.news.NewsView;
 import webfusion.lawyercrm.views.pages.PagesView;
 import webfusion.lawyercrm.views.services.ServicesView;
+import webfusion.lawyercrm.views.users.UsersView;
 
+import javax.annotation.PostConstruct;
 import java.util.Optional;
 
 /**
@@ -29,11 +35,14 @@ import java.util.Optional;
 @JsModule("./styles/shared-styles.js")
 @CssImport("./styles/views/main/main-view.css")
 public class MainView extends AppLayout {
+    @Autowired
+    private UsersService usersService;
 
-    private final Tabs menu;
+    private Tabs menu;
     private H1 viewTitle;
 
-    public MainView() {
+    @PostConstruct
+    public void init() {
         setPrimarySection(Section.DRAWER);
         addToNavbar(true, createHeaderContent());
         menu = createMenu();
@@ -47,9 +56,13 @@ public class MainView extends AppLayout {
         layout.setWidthFull();
         layout.setSpacing(false);
         layout.setAlignItems(FlexComponent.Alignment.CENTER);
+        layout.setJustifyContentMode(FlexComponent.JustifyContentMode.BETWEEN);
         layout.add(new DrawerToggle());
         viewTitle = new H1();
         layout.add(viewTitle);
+        H1 userInfo = new H1(getCurrentUserFirstNameAndLastName());
+        userInfo.getStyle().set("margin-right", "1vw");
+        layout.add(userInfo);
         return layout;
     }
 
@@ -59,6 +72,7 @@ public class MainView extends AppLayout {
         layout.setPadding(false);
         layout.setSpacing(false);
         layout.getThemeList().set("spacing-s", true);
+        layout.getThemeList().set("dark", true);
         layout.setAlignItems(FlexComponent.Alignment.STRETCH);
         HorizontalLayout logoLayout = new HorizontalLayout();
         logoLayout.setId("logo");
@@ -85,6 +99,7 @@ public class MainView extends AppLayout {
                 createTab("Advices", AdvicesView.class),
                 createTab("Services", ServicesView.class),
                 createTab("Pages", PagesView.class),
+                createTab("Users", UsersView.class),
         };
     }
 
@@ -111,5 +126,14 @@ public class MainView extends AppLayout {
 
     private String getCurrentPageTitle() {
         return getContent().getClass().getAnnotation(PageTitle.class).value();
+    }
+
+    private String getCurrentUserFirstNameAndLastName() {
+        User userPrincipal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        webfusion.lawyercrm.models.User user = usersService.findByUsername(userPrincipal.getUsername()).get();
+        if((user.getFirstname() == null) || (user.getLastname() == null)) {
+            return "Firstname Lastname";
+        }
+        return user.getFirstname() + " " + user.getLastname();
     }
 }

@@ -27,6 +27,8 @@ public class FeedbackView extends VerticalLayout {
 
     @PostConstruct
     public void init() {
+        getThemeList().set("dark", true);
+        setSizeFull();
         CrudGrid<Feedback> crudGrid = new CrudGrid<>(Feedback.class, false);
         Crud<Feedback> crud = new Crud<>(Feedback.class, crudGrid, createCrudEditor());
         crud.setDataProvider(new FeedbackDataProvider(feedbackService));

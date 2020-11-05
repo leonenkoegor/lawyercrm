@@ -29,6 +29,8 @@ public class NewsView extends VerticalLayout {
 
     @PostConstruct
     public void init() {
+        getThemeList().set("dark", true);
+        setSizeFull();
         CrudGrid<News> crudGrid = new CrudGrid<>(News.class, false);
         Crud<News> crud = new Crud<>(News.class, crudGrid, createCrudEditor());
         crud.setDataProvider(new NewsDataProvider(newsService));
