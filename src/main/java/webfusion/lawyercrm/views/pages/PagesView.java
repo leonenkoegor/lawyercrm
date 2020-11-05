@@ -50,6 +50,7 @@ public class PagesView extends VerticalLayout {
         divs.setClassName("v-scrollable");
         divs.getStyle().set("overflow-y", "auto");
 
+        tabs.setWidthFull();
         add(tabs, divs);
     }
 
