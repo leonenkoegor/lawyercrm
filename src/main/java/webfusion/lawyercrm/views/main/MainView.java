@@ -41,6 +41,13 @@ public class MainView extends AppLayout {
     private Tabs menu;
     private H1 viewTitle;
 
+    private static Tab createTab(String text, Class<? extends Component> navigationTarget) {
+        final Tab tab = new Tab();
+        tab.add(new RouterLink(text, navigationTarget));
+        ComponentUtil.setData(tab, Class.class, navigationTarget);
+        return tab;
+    }
+
     @PostConstruct
     public void init() {
         setPrimarySection(Section.DRAWER);
@@ -93,7 +100,7 @@ public class MainView extends AppLayout {
     }
 
     private Component[] createMenuItems() {
-        return new Tab[] {
+        return new Tab[]{
                 createTab("Feedback", FeedbackView.class),
                 createTab("News", NewsView.class),
                 createTab("Advices", AdvicesView.class),
@@ -101,13 +108,6 @@ public class MainView extends AppLayout {
                 createTab("Pages", PagesView.class),
                 createTab("Users", UsersView.class),
         };
-    }
-
-    private static Tab createTab(String text, Class<? extends Component> navigationTarget) {
-        final Tab tab = new Tab();
-        tab.add(new RouterLink(text, navigationTarget));
-        ComponentUtil.setData(tab, Class.class, navigationTarget);
-        return tab;
     }
 
     @Override
@@ -131,7 +131,7 @@ public class MainView extends AppLayout {
     private String getCurrentUserFirstNameAndLastName() {
         User userPrincipal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         webfusion.lawyercrm.models.User user = usersService.findByUsername(userPrincipal.getUsername()).get();
-        if((user.getFirstname() == null) || (user.getLastname() == null)) {
+        if ((user.getFirstname() == null) || (user.getLastname() == null)) {
             return "Firstname Lastname";
         }
         return user.getFirstname() + " " + user.getLastname();

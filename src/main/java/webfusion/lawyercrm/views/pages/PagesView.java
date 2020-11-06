@@ -25,12 +25,11 @@ import java.util.Map;
 @PageTitle("Pages | CRM")
 @NoArgsConstructor
 public class PagesView extends VerticalLayout {
-    @Autowired
-    private PageService pageService;
-
     private final Map<Tab, Component> tabToDiv = new HashMap<>();
     private final Tabs tabs = new Tabs();
     private final Div divs = new Div();
+    @Autowired
+    private PageService pageService;
 
     @PostConstruct
     public void init() {
@@ -58,7 +57,7 @@ public class PagesView extends VerticalLayout {
         Tab tab = new Tab(name);
         Div div = new Div();
         div.setHeightFull();
-        if(tabToDiv.size() != 0) {
+        if (tabToDiv.size() != 0) {
             div.setVisible(false);
         }
         tabs.add(tab);
