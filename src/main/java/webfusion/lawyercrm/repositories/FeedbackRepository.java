@@ -6,4 +6,5 @@ import webfusion.lawyercrm.models.Feedback;
 
 @Repository
 public interface FeedbackRepository extends JpaRepository<Feedback, Long> {
+
 }

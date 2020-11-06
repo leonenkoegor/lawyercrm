@@ -8,6 +8,7 @@ import java.time.LocalDate;
 @Entity(name = "advices")
 @Data
 public class Advices {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -15,4 +16,5 @@ public class Advices {
     private String title;
     @Column(length = 99999)
     private String text;
+
 }

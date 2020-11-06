@@ -8,5 +8,7 @@ import java.util.List;
 
 @Repository
 public interface NewsRepository extends CrudRepository<News, Integer> {
+
     List<News> findAll();
+
 }

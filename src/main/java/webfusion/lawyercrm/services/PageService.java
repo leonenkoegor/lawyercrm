@@ -10,6 +10,7 @@ import java.util.Optional;
 
 @Service
 public class PageService {
+
     private final PageRepository pageRepository;
 
     @Autowired
@@ -28,4 +29,5 @@ public class PageService {
     public void update(Page page) {
         pageRepository.save(page);
     }
+
 }

@@ -25,6 +25,7 @@ import javax.annotation.PostConstruct;
 @PageTitle("Users | CRM")
 @NoArgsConstructor
 public class UsersView extends VerticalLayout {
+
     @Autowired
     private UsersService usersService;
 
@@ -61,13 +62,12 @@ public class UsersView extends VerticalLayout {
 
         Binder<User> binder = new Binder<>(User.class);
         binder.bind(usernameField, User::getUsername, User::setUsername);
-        binder.bind(passwordField, (ignore) -> "", (user, password) -> {
-            user.setPassword(bCryptPasswordEncoder.encode(password));
-        });
+        binder.bind(passwordField, (ignore) -> "", (user, password) -> user.setPassword(bCryptPasswordEncoder.encode(password)));
         binder.bind(enabledField, User::getEnabled, User::setEnabled);
         binder.bind(firstnameField, User::getFirstname, User::setFirstname);
         binder.bind(lastnameField, User::getLastname, User::setLastname);
 
         return new BinderCrudEditor<>(binder, form);
     }
+
 }

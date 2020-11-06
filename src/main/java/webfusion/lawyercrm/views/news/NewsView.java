@@ -24,6 +24,7 @@ import javax.annotation.PostConstruct;
 @PageTitle("News | CRM")
 @NoArgsConstructor
 public class NewsView extends VerticalLayout {
+
     @Autowired
     private NewsService newsService;
 
@@ -58,4 +59,5 @@ public class NewsView extends VerticalLayout {
 
         return new BinderCrudEditor<>(binder, form);
     }
+
 }

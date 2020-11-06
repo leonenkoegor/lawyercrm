@@ -8,5 +8,7 @@ import java.util.List;
 
 @Repository
 public interface AdvicesRepository extends CrudRepository<Advices, Integer> {
+
     List<Advices> findAll();
+
 }

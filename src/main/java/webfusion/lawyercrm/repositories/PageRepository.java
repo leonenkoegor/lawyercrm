@@ -6,4 +6,5 @@ import webfusion.lawyercrm.models.Page;
 
 @Repository
 public interface PageRepository extends JpaRepository<Page, String> {
+
 }

@@ -10,6 +10,7 @@ import webfusion.lawyercrm.services.ServicesService;
 @RestController
 @RequestMapping("api/services")
 public class ServicesController {
+
     private final ServicesService servicesService;
 
     @Autowired
@@ -21,4 +22,5 @@ public class ServicesController {
     public Object getAll() {
         return new Response("GOOD", "Get all services", servicesService.findAll());
     }
+
 }

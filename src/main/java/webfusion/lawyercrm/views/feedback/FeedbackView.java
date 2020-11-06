@@ -22,6 +22,7 @@ import javax.annotation.PostConstruct;
 @PageTitle("Feedback | CRM")
 @NoArgsConstructor
 public class FeedbackView extends VerticalLayout {
+
     @Autowired
     private FeedbackService feedbackService;
 
@@ -56,4 +57,5 @@ public class FeedbackView extends VerticalLayout {
 
         return new BinderCrudEditor<>(binder, form);
     }
+
 }

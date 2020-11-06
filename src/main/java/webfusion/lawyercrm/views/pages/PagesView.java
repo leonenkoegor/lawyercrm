@@ -25,6 +25,7 @@ import java.util.Map;
 @PageTitle("Pages | CRM")
 @NoArgsConstructor
 public class PagesView extends VerticalLayout {
+
     private final Map<Tab, Component> tabToDiv = new HashMap<>();
     private final Tabs tabs = new Tabs();
     private final Div divs = new Div();
@@ -102,4 +103,5 @@ public class PagesView extends VerticalLayout {
             selectedPage.setVisible(true);
         });
     }
+
 }

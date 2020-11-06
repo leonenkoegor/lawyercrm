@@ -9,6 +9,7 @@ import java.util.List;
 
 @Service
 public class FeedbackService {
+
     private final FeedbackRepository feedbackRepository;
 
     @Autowired
@@ -27,4 +28,5 @@ public class FeedbackService {
     public void delete(Feedback feedback) {
         feedbackRepository.delete(feedback);
     }
+
 }

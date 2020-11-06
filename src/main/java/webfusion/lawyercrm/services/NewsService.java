@@ -9,6 +9,7 @@ import java.util.List;
 
 @Service
 public class NewsService {
+
     private final NewsRepository newsRepository;
 
     @Autowired
@@ -27,4 +28,5 @@ public class NewsService {
     public void delete(News news) {
         newsRepository.delete(news);
     }
+
 }

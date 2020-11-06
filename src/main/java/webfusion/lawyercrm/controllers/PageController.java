@@ -12,6 +12,7 @@ import webfusion.lawyercrm.services.exceptions.PageNotFoundException;
 @RestController
 @RequestMapping("api/pages")
 public class PageController {
+
     private final PageService pageService;
 
     @Autowired
@@ -27,4 +28,5 @@ public class PageController {
             return new Response("FAILED", "Page doesn't fill", null);
         }
     }
+
 }

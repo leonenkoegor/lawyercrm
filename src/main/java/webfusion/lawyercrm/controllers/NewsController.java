@@ -10,6 +10,7 @@ import webfusion.lawyercrm.services.NewsService;
 @RestController
 @RequestMapping("api/news")
 public class NewsController {
+
     private final NewsService newsService;
 
     @Autowired
@@ -21,4 +22,5 @@ public class NewsController {
     public Object getAll() {
         return new Response("GOOD", "Get all news", newsService.findAll());
     }
+
 }

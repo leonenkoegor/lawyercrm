@@ -9,6 +9,7 @@ import java.util.List;
 
 @Service
 public class AdvicesService {
+
     private final AdvicesRepository advicesRepository;
 
     @Autowired
@@ -27,4 +28,5 @@ public class AdvicesService {
     public void delete(Advices advices) {
         advicesRepository.delete(advices);
     }
+
 }

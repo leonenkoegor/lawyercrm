@@ -10,9 +10,11 @@ import javax.persistence.Id;
 @Entity(name = "services")
 @Data
 public class Services {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String serviceName;
     private Double costs;
+
 }

@@ -35,6 +35,7 @@ import java.util.Optional;
 @JsModule("./styles/shared-styles.js")
 @CssImport("./styles/views/main/main-view.css")
 public class MainView extends AppLayout {
+
     @Autowired
     private UsersService usersService;
 
@@ -136,4 +137,5 @@ public class MainView extends AppLayout {
         }
         return user.getFirstname() + " " + user.getLastname();
     }
+
 }

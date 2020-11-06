@@ -9,6 +9,7 @@ import webfusion.lawyercrm.services.FeedbackService;
 import java.util.stream.Stream;
 
 public class FeedbackDataProvider extends AbstractBackEndDataProvider<Feedback, CrudEditor> {
+
     private final FeedbackService feedbackService;
 
     public FeedbackDataProvider(FeedbackService feedbackService) {
@@ -24,4 +25,5 @@ public class FeedbackDataProvider extends AbstractBackEndDataProvider<Feedback, 
     protected int sizeInBackEnd(Query<Feedback, CrudEditor> query) {
         return feedbackService.findAll().size();
     }
+
 }

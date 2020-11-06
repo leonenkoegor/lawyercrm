@@ -9,6 +9,7 @@ import webfusion.lawyercrm.services.NewsService;
 import java.util.stream.Stream;
 
 public class NewsDataProvider extends AbstractBackEndDataProvider<News, CrudFilter> {
+
     private final NewsService newsService;
 
     public NewsDataProvider(NewsService newsService) {
@@ -24,4 +25,5 @@ public class NewsDataProvider extends AbstractBackEndDataProvider<News, CrudFilt
     protected int sizeInBackEnd(Query<News, CrudFilter> query) {
         return newsService.findAll().size();
     }
+
 }

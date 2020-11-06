@@ -9,6 +9,7 @@ import webfusion.lawyercrm.services.UsersService;
 import java.util.stream.Stream;
 
 public class UsersDataProvider extends AbstractBackEndDataProvider<User, CrudFilter> {
+
     private final UsersService usersService;
 
     public UsersDataProvider(UsersService usersService) {
@@ -24,4 +25,5 @@ public class UsersDataProvider extends AbstractBackEndDataProvider<User, CrudFil
     protected int sizeInBackEnd(Query<User, CrudFilter> query) {
         return usersService.findAll().size();
     }
+
 }

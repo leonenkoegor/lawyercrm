@@ -10,6 +10,7 @@ import com.vaadin.flow.router.Route;
 @Route("login")
 @PageTitle("Login | Control panel")
 public class LoginView extends VerticalLayout implements BeforeEnterObserver {
+
     private final LoginForm login = new LoginForm();
 
     public LoginView() {
@@ -34,4 +35,5 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
             login.setError(true);
         }
     }
+
 }

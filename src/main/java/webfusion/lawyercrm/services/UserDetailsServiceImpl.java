@@ -11,6 +11,7 @@ import java.util.Optional;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
+
     private final UsersService usersService;
 
     @Autowired
@@ -34,4 +35,5 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             throw new UsernameNotFoundException("User Name is not Found");
         }
     }
+
 }

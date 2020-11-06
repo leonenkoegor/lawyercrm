@@ -8,5 +8,7 @@ import java.util.LinkedList;
 
 @Repository
 public interface ServicesRepository extends CrudRepository<Services, Integer> {
+
     LinkedList<Services> findAll();
+
 }

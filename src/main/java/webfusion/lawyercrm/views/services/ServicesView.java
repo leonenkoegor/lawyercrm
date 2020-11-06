@@ -23,6 +23,7 @@ import javax.annotation.PostConstruct;
 @PageTitle("Services | CRM")
 @NoArgsConstructor
 public class ServicesView extends VerticalLayout {
+
     @Autowired
     ServicesService servicesService;
 
@@ -55,4 +56,5 @@ public class ServicesView extends VerticalLayout {
 
         return new BinderCrudEditor<>(binder, form);
     }
+
 }

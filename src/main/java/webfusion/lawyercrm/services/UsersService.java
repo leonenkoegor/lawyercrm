@@ -10,6 +10,7 @@ import java.util.Optional;
 
 @Service
 public class UsersService {
+
     private final UsersRepository usersRepository;
 
     @Autowired
@@ -32,4 +33,5 @@ public class UsersService {
     public void delete(User user) {
         usersRepository.delete(user);
     }
+
 }

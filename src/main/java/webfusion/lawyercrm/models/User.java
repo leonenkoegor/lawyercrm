@@ -10,6 +10,7 @@ import javax.persistence.Id;
 @Entity(name = "users")
 @Data
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,4 +19,5 @@ public class User {
     private Boolean enabled;
     private String firstname;
     private String lastname;
+
 }

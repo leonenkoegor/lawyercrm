@@ -10,6 +10,7 @@ import webfusion.lawyercrm.services.FeedbackService;
 @RestController
 @RequestMapping(value = "api/feedback")
 public class FeedbackController {
+
     private final FeedbackService feedbackService;
 
     @Autowired
@@ -21,4 +22,5 @@ public class FeedbackController {
     public void addFeedback(Feedback feedback) {
         feedbackService.update(feedback);
     }
+
 }

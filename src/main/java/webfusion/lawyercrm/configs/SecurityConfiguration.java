@@ -14,6 +14,7 @@ import webfusion.lawyercrm.services.UserDetailsServiceImpl;
 @EnableWebSecurity
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+
     private static final String LOGIN_PROCESSING_URL = "/login";
     private static final String LOGIN_FAILURE_URL = "/login?error";
     private static final String LOGIN_SUCCESS_URL = "/admin/news";
@@ -65,4 +66,5 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public BCryptPasswordEncoder getEncoder() {
         return new BCryptPasswordEncoder();
     }
+
 }
