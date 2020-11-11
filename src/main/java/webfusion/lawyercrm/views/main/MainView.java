@@ -24,6 +24,7 @@ import webfusion.lawyercrm.views.feedback.FeedbackView;
 import webfusion.lawyercrm.views.news.NewsView;
 import webfusion.lawyercrm.views.pages.PagesView;
 import webfusion.lawyercrm.views.services.ServicesView;
+import webfusion.lawyercrm.views.settings.SettingsView;
 import webfusion.lawyercrm.views.users.UsersView;
 
 import javax.annotation.PostConstruct;
@@ -108,6 +109,7 @@ public class MainView extends AppLayout {
                 createTab("Services", ServicesView.class),
                 createTab("Pages", PagesView.class),
                 createTab("Users", UsersView.class),
+                createTab("Settings", SettingsView.class),
         };
     }
 

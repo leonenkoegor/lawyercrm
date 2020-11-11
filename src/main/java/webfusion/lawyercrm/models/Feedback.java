@@ -16,6 +16,7 @@ public class Feedback {
     private Long id;
     private String name;
     private String email;
+    private String question;
     private String text;
 
 }

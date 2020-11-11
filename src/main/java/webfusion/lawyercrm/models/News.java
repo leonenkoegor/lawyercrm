@@ -14,6 +14,7 @@ public class News {
     private Integer id;
     private LocalDate date;
     private String title;
+    private String description;
     @Column(length = 99999)
     private String text;
 

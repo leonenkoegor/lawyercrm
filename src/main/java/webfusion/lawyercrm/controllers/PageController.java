@@ -1,11 +1,9 @@
 package webfusion.lawyercrm.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import webfusion.lawyercrm.controllers.responses.Response;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import webfusion.lawyercrm.services.PageService;
 import webfusion.lawyercrm.services.exceptions.PageNotFoundException;
 
@@ -21,12 +19,12 @@ public class PageController {
     }
 
     @GetMapping("/{page}")
-    public Object get(@PathVariable String page) {
-        try {
-            return new Response("GOOD", "Page content", pageService.findById(page).getText());
-        } catch (PageNotFoundException e) {
-            return new Response("FAILED", "Page doesn't fill", null);
-        }
+    public Object get(@PathVariable String page) throws PageNotFoundException {
+        return new ResponseEntity<>(pageService.findById(page).getText(), HttpStatus.OK);
     }
 
+    @ExceptionHandler
+    public Object pageNotFoundHandler(PageNotFoundException e) {
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
 }

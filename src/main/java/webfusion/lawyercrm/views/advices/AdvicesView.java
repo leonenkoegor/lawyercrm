@@ -8,6 +8,7 @@ import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.richtexteditor.RichTextEditor;
+import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.router.PageTitle;
@@ -49,12 +50,15 @@ public class AdvicesView extends VerticalLayout {
     public CrudEditor<Advices> createCrudEditor() {
         TextField title = new TextField("Title");
         DatePicker date = new DatePicker("Date");
-        RichTextEditor text = new RichTextEditor();
-        FormLayout form = new FormLayout(title, text, date);
+        RichTextEditor text = new RichTextEditor("Text");
+        TextArea description = new TextArea("Description");
+        description.setMaxLength(255);
+        FormLayout form = new FormLayout(date, title, text, description);
 
         Binder<Advices> binder = new Binder<>(Advices.class);
         binder.bind(title, Advices::getTitle, Advices::setTitle);
         binder.bind(text, Advices::getText, Advices::setText);
+        binder.bind(description, Advices::getDescription, Advices::setDescription);
         binder.bind(date, Advices::getDate, Advices::setDate);
 
         return new BinderCrudEditor<>(binder, form);
