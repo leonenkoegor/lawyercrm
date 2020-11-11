@@ -15,12 +15,13 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import webfusion.lawyercrm.models.Services;
 import webfusion.lawyercrm.services.ServicesService;
+import webfusion.lawyercrm.views.Localization;
 import webfusion.lawyercrm.views.main.MainView;
 
 import javax.annotation.PostConstruct;
 
 @Route(value = "admin/services", layout = MainView.class)
-@PageTitle("Services | CRM")
+@PageTitle("Услуги | CRM")
 @NoArgsConstructor
 public class ServicesView extends VerticalLayout {
 
@@ -34,6 +35,7 @@ public class ServicesView extends VerticalLayout {
         CrudGrid<Services> crudGrid = new CrudGrid<>(Services.class, false);
         Crud<Services> crud = new Crud<>(Services.class, crudGrid, createCrudEditor());
         crud.setDataProvider(new ServicesDataProvider(servicesService));
+        crud.setI18n(Localization.getCrudLocalization());
 
         crud.addSaveListener((event) -> servicesService.update(event.getItem()));
         crud.addDeleteListener((event) -> servicesService.delete(event.getItem()));
@@ -46,8 +48,8 @@ public class ServicesView extends VerticalLayout {
     }
 
     public CrudEditor<Services> createCrudEditor() {
-        TextField serviceName = new TextField("Service Name");
-        NumberField costs = new NumberField("Costs");
+        TextField serviceName = new TextField("Название услуги");
+        NumberField costs = new NumberField("Стоимость");
         FormLayout form = new FormLayout(serviceName, costs);
 
         Binder<Services> binder = new Binder<>(Services.class);

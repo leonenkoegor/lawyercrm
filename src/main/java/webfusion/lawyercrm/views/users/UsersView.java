@@ -17,12 +17,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import webfusion.lawyercrm.models.User;
 import webfusion.lawyercrm.services.UsersService;
+import webfusion.lawyercrm.views.Localization;
 import webfusion.lawyercrm.views.main.MainView;
 
 import javax.annotation.PostConstruct;
 
 @Route(value = "admin/users", layout = MainView.class)
-@PageTitle("Users | CRM")
+@PageTitle("Пользователи | CRM")
 @NoArgsConstructor
 public class UsersView extends VerticalLayout {
 
@@ -39,6 +40,7 @@ public class UsersView extends VerticalLayout {
         CrudGrid<User> crudGrid = new CrudGrid<>(User.class, false);
         Crud<User> crud = new Crud<>(User.class, crudGrid, createCrudEditor());
         crud.setDataProvider(new UsersDataProvider(usersService));
+        crud.setI18n(Localization.getCrudLocalization());
 
         crud.addSaveListener((event) -> usersService.update(event.getItem()));
         crud.addDeleteListener((event) -> usersService.delete(event.getItem()));
@@ -52,12 +54,12 @@ public class UsersView extends VerticalLayout {
     }
 
     public CrudEditor<User> createCrudEditor() {
-        TextField usernameField = new TextField("Username");
-        PasswordField passwordField = new PasswordField("Password");
-        passwordField.setPlaceholder("Fill it!");
-        Checkbox enabledField = new Checkbox("Enabled?");
-        TextField firstnameField = new TextField("Firstname");
-        TextField lastnameField = new TextField("Lastname");
+        TextField usernameField = new TextField("Логин");
+        PasswordField passwordField = new PasswordField("Пароль");
+        passwordField.setPlaceholder("Перезаполни!");
+        Checkbox enabledField = new Checkbox("Включён?");
+        TextField firstnameField = new TextField("Имя");
+        TextField lastnameField = new TextField("Фамилия");
         FormLayout form = new FormLayout(usernameField, passwordField, enabledField, firstnameField, lastnameField);
 
         Binder<User> binder = new Binder<>(User.class);

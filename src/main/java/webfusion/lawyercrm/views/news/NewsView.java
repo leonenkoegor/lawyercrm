@@ -17,12 +17,13 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import webfusion.lawyercrm.models.News;
 import webfusion.lawyercrm.services.NewsService;
+import webfusion.lawyercrm.views.Localization;
 import webfusion.lawyercrm.views.main.MainView;
 
 import javax.annotation.PostConstruct;
 
 @Route(value = "admin/news", layout = MainView.class)
-@PageTitle("News | CRM")
+@PageTitle("Новости | CRM")
 @NoArgsConstructor
 public class NewsView extends VerticalLayout {
 
@@ -36,6 +37,7 @@ public class NewsView extends VerticalLayout {
         CrudGrid<News> crudGrid = new CrudGrid<>(News.class, false);
         Crud<News> crud = new Crud<>(News.class, crudGrid, createCrudEditor());
         crud.setDataProvider(new NewsDataProvider(newsService));
+        crud.setI18n(Localization.getCrudLocalization());
 
         crud.addSaveListener((event) -> newsService.update(event.getItem()));
         crud.addDeleteListener((event) -> newsService.delete(event.getItem()));
@@ -48,9 +50,9 @@ public class NewsView extends VerticalLayout {
     }
 
     public CrudEditor<News> createCrudEditor() {
-        TextField title = new TextField("Title");
-        DatePicker date = new DatePicker("Date");
-        TextArea description = new TextArea("Description");
+        TextField title = new TextField("Заголовок");
+        DatePicker date = new DatePicker("Дата");
+        TextArea description = new TextArea("Описание");
         description.setMaxLength(255);
         RichTextEditor text = new RichTextEditor();
         FormLayout form = new FormLayout(title, description, text, date);

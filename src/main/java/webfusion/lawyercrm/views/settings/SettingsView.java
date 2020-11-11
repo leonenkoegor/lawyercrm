@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import webfusion.lawyercrm.models.File;
 import webfusion.lawyercrm.services.FilesService;
+import webfusion.lawyercrm.views.Localization;
 import webfusion.lawyercrm.views.main.MainView;
 
 import javax.annotation.PostConstruct;
@@ -19,7 +20,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 @Route(value = "admin/settings", layout = MainView.class)
-@PageTitle("Settings | CRM")
+@PageTitle("Настройки | CRM")
 @NoArgsConstructor
 public class SettingsView extends VerticalLayout {
 
@@ -35,7 +36,7 @@ public class SettingsView extends VerticalLayout {
 
         accordion.setSizeFull();
 
-        createSection("Upload main page image file", uploadMainImageFile());
+        createSection("Загрузить фото на главную страницу", uploadMainImageFile());
 
         add(accordion);
     }
@@ -49,6 +50,9 @@ public class SettingsView extends VerticalLayout {
         mainImageContainer.setWidthFull();
         MemoryBuffer memoryBuffer = new MemoryBuffer();
         Upload mainImageField = new Upload(memoryBuffer);
+
+        mainImageField.setI18n(Localization.getUploadLocalization());
+
         mainImageField.setMaxFiles(1);
         mainImageField.addSucceededListener(succeededEvent -> {
             File mainImageFile = filesService.findByName("mainImage").orElseGet(File::new);

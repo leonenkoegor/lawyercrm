@@ -1,9 +1,6 @@
 package webfusion.lawyercrm.views.feedback;
 
-import com.vaadin.flow.component.crud.BinderCrudEditor;
-import com.vaadin.flow.component.crud.Crud;
-import com.vaadin.flow.component.crud.CrudEditor;
-import com.vaadin.flow.component.crud.CrudGrid;
+import com.vaadin.flow.component.crud.*;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
@@ -14,12 +11,13 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import webfusion.lawyercrm.models.Feedback;
 import webfusion.lawyercrm.services.FeedbackService;
+import webfusion.lawyercrm.views.Localization;
 import webfusion.lawyercrm.views.main.MainView;
 
 import javax.annotation.PostConstruct;
 
 @Route(value = "admin/feedback", layout = MainView.class)
-@PageTitle("Feedback | CRM")
+@PageTitle("Обратная связь | CRM")
 @NoArgsConstructor
 public class FeedbackView extends VerticalLayout {
 
@@ -33,6 +31,7 @@ public class FeedbackView extends VerticalLayout {
         CrudGrid<Feedback> crudGrid = new CrudGrid<>(Feedback.class, false);
         Crud<Feedback> crud = new Crud<>(Feedback.class, crudGrid, createCrudEditor());
         crud.setDataProvider(new FeedbackDataProvider(feedbackService));
+        crud.setI18n(Localization.getCrudLocalization());
 
         crud.addSaveListener((event) -> feedbackService.update(event.getItem()));
         crud.addDeleteListener((event) -> feedbackService.delete(event.getItem()));
@@ -45,10 +44,10 @@ public class FeedbackView extends VerticalLayout {
     }
 
     public CrudEditor<Feedback> createCrudEditor() {
-        TextField name = new TextField("Name");
-        TextField email = new TextField("Email");
-        TextField question = new TextField("Question");
-        TextField text = new TextField("Text");
+        TextField name = new TextField("Имя");
+        TextField email = new TextField("Почта");
+        TextField question = new TextField("Вопрос");
+        TextField text = new TextField("Текст");
         FormLayout form = new FormLayout(name, email, question, text);
 
         Binder<Feedback> binder = new Binder<>(Feedback.class);

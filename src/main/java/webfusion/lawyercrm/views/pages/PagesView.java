@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Route(value = "admin/pages", layout = MainView.class)
-@PageTitle("Pages | CRM")
+@PageTitle("Фрагменты | CRM")
 @NoArgsConstructor
 public class PagesView extends VerticalLayout {
 
@@ -35,12 +35,12 @@ public class PagesView extends VerticalLayout {
     @PostConstruct
     public void init() {
         getThemeList().set("dark", true);
-        createTabAndContent("Liquidation");
-        createTabAndContent("Bankruptcy");
-        createTabAndContent("LegalServices");
-        createTabAndContent("Specialists");
-        createTabAndContent("PriceInformation");
-        createTabAndContent("AboutMe");
+        createTabAndContent("Ликвидация","Liquidation");
+        createTabAndContent("Банкротство" ,"Bankruptcy");
+        createTabAndContent("Юридические услуги", "LegalServices");
+        createTabAndContent("Специалисты", "Specialists");
+        createTabAndContent("Информация о стоимости", "PriceInformation");
+        createTabAndContent("Обо мне", "AboutMe");
         configureTabsAndContent();
         setAlignItems(Alignment.CENTER);
 
@@ -54,8 +54,9 @@ public class PagesView extends VerticalLayout {
         add(tabs, divs);
     }
 
-    private void createTabAndContent(String name) {
-        Tab tab = new Tab(name);
+    private void createTabAndContent(String rusName, String engName) {
+        Tab tab = new Tab(rusName);
+        tab.setId(engName);
         Div div = new Div();
         div.setHeightFull();
         if (tabToDiv.size() != 0) {
@@ -73,11 +74,11 @@ public class PagesView extends VerticalLayout {
             text.setMinHeight("70vh");
 
             try {
-                text.setValue(pageService.findById(tab.getLabel()).getText());
+                text.setValue(pageService.findById(tab.getId().get()).getText());
             } catch (PageNotFoundException ignored) {
             }
 
-            Button save = new Button("Save");
+            Button save = new Button("Сохранить");
 
             save.addClickListener((event) -> {
                 Page page = new Page();

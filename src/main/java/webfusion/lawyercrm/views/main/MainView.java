@@ -24,6 +24,7 @@ import webfusion.lawyercrm.views.feedback.FeedbackView;
 import webfusion.lawyercrm.views.news.NewsView;
 import webfusion.lawyercrm.views.pages.PagesView;
 import webfusion.lawyercrm.views.services.ServicesView;
+import webfusion.lawyercrm.views.servicesDescription.ServicesDescriptionView;
 import webfusion.lawyercrm.views.settings.SettingsView;
 import webfusion.lawyercrm.views.users.UsersView;
 
@@ -103,13 +104,14 @@ public class MainView extends AppLayout {
 
     private Component[] createMenuItems() {
         return new Tab[]{
-                createTab("Feedback", FeedbackView.class),
-                createTab("News", NewsView.class),
-                createTab("Advices", AdvicesView.class),
-                createTab("Services", ServicesView.class),
-                createTab("Pages", PagesView.class),
-                createTab("Users", UsersView.class),
-                createTab("Settings", SettingsView.class),
+                createTab("Обратная связь", FeedbackView.class),
+                createTab("Новости", NewsView.class),
+                createTab("Советы", AdvicesView.class),
+                createTab("Услуги", ServicesView.class),
+                createTab("Описание услуг", ServicesDescriptionView.class),
+                createTab("Фрагменты", PagesView.class),
+                createTab("Пользователи", UsersView.class),
+                createTab("Настройки", SettingsView.class),
         };
     }
 

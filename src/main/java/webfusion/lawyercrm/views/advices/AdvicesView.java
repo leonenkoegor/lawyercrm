@@ -17,12 +17,13 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import webfusion.lawyercrm.models.Advices;
 import webfusion.lawyercrm.services.AdvicesService;
+import webfusion.lawyercrm.views.Localization;
 import webfusion.lawyercrm.views.main.MainView;
 
 import javax.annotation.PostConstruct;
 
 @Route(value = "admin/advices", layout = MainView.class)
-@PageTitle("Advices | CRM")
+@PageTitle("Советы | CRM")
 @NoArgsConstructor
 public class AdvicesView extends VerticalLayout {
 
@@ -36,6 +37,7 @@ public class AdvicesView extends VerticalLayout {
         CrudGrid<Advices> crudGrid = new CrudGrid<>(Advices.class, false);
         Crud<Advices> crud = new Crud<>(Advices.class, crudGrid, createCrudEditor());
         crud.setDataProvider(new AdvicesDataProvider(advicesService));
+        crud.setI18n(Localization.getCrudLocalization());
 
         crud.addSaveListener((event) -> advicesService.update(event.getItem()));
         crud.addDeleteListener((event) -> advicesService.delete(event.getItem()));
@@ -48,10 +50,10 @@ public class AdvicesView extends VerticalLayout {
     }
 
     public CrudEditor<Advices> createCrudEditor() {
-        TextField title = new TextField("Title");
-        DatePicker date = new DatePicker("Date");
-        RichTextEditor text = new RichTextEditor("Text");
-        TextArea description = new TextArea("Description");
+        TextField title = new TextField("Заголовок");
+        DatePicker date = new DatePicker("Дата");
+        RichTextEditor text = new RichTextEditor("Текст");
+        TextArea description = new TextArea("Описание");
         description.setMaxLength(255);
         FormLayout form = new FormLayout(date, title, text, description);
 
