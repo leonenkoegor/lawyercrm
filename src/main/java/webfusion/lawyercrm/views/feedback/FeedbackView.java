@@ -45,13 +45,15 @@ public class FeedbackView extends VerticalLayout {
 
     public CrudEditor<Feedback> createCrudEditor() {
         TextField name = new TextField("Имя");
+        TextField phone = new TextField("Телефон");
         TextField email = new TextField("Почта");
         TextField question = new TextField("Вопрос");
         TextField text = new TextField("Текст");
-        FormLayout form = new FormLayout(name, email, question, text);
+        FormLayout form = new FormLayout(name, phone, email, question, text);
 
         Binder<Feedback> binder = new Binder<>(Feedback.class);
         binder.bind(name, Feedback::getName, Feedback::setName);
+        binder.bind(phone, Feedback::getPhone, Feedback::setPhone);
         binder.bind(email, Feedback::getEmail, Feedback::setEmail);
         binder.bind(question, Feedback::getQuestion, Feedback::setQuestion);
         binder.bind(text, Feedback::getText, Feedback::setText);
