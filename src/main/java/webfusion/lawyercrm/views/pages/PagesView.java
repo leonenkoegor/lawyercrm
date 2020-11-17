@@ -82,7 +82,7 @@ public class PagesView extends VerticalLayout {
 
             save.addClickListener((event) -> {
                 Page page = new Page();
-                page.setPageName(tab.getLabel());
+                page.setPageName(tab.getId().get());
                 page.setText(text.getValue());
                 pageService.update(page);
             });
